@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: MIT
+import "hardhat/console.sol";
+
 pragma solidity ^0.8.9;
 
 contract Delegate {
@@ -9,6 +11,7 @@ contract Delegate {
     }
 
     function pwn() public {
+        console.log('pwn is called');
         owner = msg.sender;
     }
 }
@@ -23,6 +26,7 @@ contract Delegation {
     }
 
     fallback() external {
+        console.log("Fallback is called");
         (bool result, ) = address(delegate).delegatecall(msg.data);
         if (result == true) {
             this;

